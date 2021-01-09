@@ -56,7 +56,10 @@ const tournaments = [
 
 export default function Home() {
   const items = [];
-  const currentDay = new Date().getDay() - 1;
+  var currentDay = new Date().getDay();
+  if (currentDay == 0)
+    currentDay = 7;
+  currentDay--;
   const lastDayToIterate = currentDay === 0 ? 6 : currentDay - 1;
   var i = currentDay;
 

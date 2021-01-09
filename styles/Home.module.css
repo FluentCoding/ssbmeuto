@@ -18,7 +18,7 @@
   justify-content: center;
   text-align: center;
   margin-right: 40px;
-  min-width: 350px;
+  min-width: 270px;
 }
 
 .column::-webkit-scrollbar {
