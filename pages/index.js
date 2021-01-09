@@ -49,8 +49,8 @@ const tournaments = [
   [{name: "We will update this all soon! Example tournament:", challonge:"https://challonge.com/de/pwxhs9s0", time: "8 PM CEST"}],
   [],
   [],
-  [{name: "LEVO 2", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1-2", time: "5 PM CEST"}],
-  [{name: "LEVO 1", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1-1", time: "5 PM CEST"}],
+  [{name: "LEVO 2", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-2", time: "5 PM CEST"}],
+  [{name: "LEVO 1", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1", time: "5 PM CEST"}],
   []
 ];
 
