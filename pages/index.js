@@ -1,65 +1,86 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import ScrollContainer from 'react-indiana-drag-scroll'
+import Image from 'next/image'
+
+const TournamentDay = (props) => (
+  <div className={styles.column}>
+    <div style={{color: '#C7493A', fontSize: props.day === "Today" ? 72 : 42, lineHeight: '72px'}}>{props.day}</div>
+    <div style={{marginTop: 100}} />
+    {props.tournaments}
+  </div>
+);
+
+const TournamentContainer = (props) => (<>
+  <div className={styles.tournament_container}>
+    {props.name}
+    {props.time && <>
+    <div style={{marginTop: 25}} />
+    <Image src="/clock.png" width="24" height="24" />
+    <div style={{marginTop: 5}} />
+    <div style={{fontSize: 18}}>{props.time}</div>
+    </>}
+    <div style={{marginTop: 50}} />
+    {props.challonge &&
+      <Link href={props.challonge}>
+        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#FF9152'}}>Challonge</a>
+      </Link>
+    }
+    {props.discord &&
+      <Link href={props.discord}>
+        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#7289DA'}}>Discord</a>
+      </Link>
+    }
+    {props.smashgg &&
+      <Link href={props.smashgg}>
+        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#CB333B'}}>SmashGG</a>
+      </Link>
+    }
+  </div>
+</>);
+
+const names = [
+  "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
+]
+
+const tournaments = [
+  [],
+  [{name: "Random KeanuReads Tournament", challonge:"https://challonge.com/de/pwxhs9s0", time: "8 PM CEST"}],
+  [],
+  [],
+  [{name: "LEVO 2", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1-2", time: "5 PM CEST"}],
+  [{name: "LEVO 1", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1-1", time: "5 PM CEST"}],
+  []
+];
 
 export default function Home() {
+  const items = [];
+  const currentDay = new Date().getDay() - 1;
+  const lastDayToIterate = currentDay === 0 ? 6 : currentDay - 1;
+  var i = currentDay;
+
+  while(true) {
+    items.push(<TournamentDay day={i == currentDay ? "Today" : names[i]} tournaments={
+        tournaments[i].map((value) => <TournamentContainer name={value.name} discord={value.discord} challonge={value.challonge} smashgg={value.smashgg} time={value.time} />)
+    } />);
+    if (i === lastDayToIterate)
+      break;
+    if (i === 6)
+      i = 0;
+    else
+      i++;
+  }
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    <ScrollContainer style={{backgroundColor: 'black'}}>
+      <div className={styles.container}>
+        <Head>
+          <title>SSBM EU Tournaments</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        {items}
+      </div>
+    </ScrollContainer>
   )
 }
