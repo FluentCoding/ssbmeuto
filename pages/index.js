@@ -46,7 +46,7 @@ const names = [
 
 const tournaments = [
   [],
-  [{name: "Random KeanuReads Tournament", challonge:"https://challonge.com/de/pwxhs9s0", time: "8 PM CEST"}],
+  [{name: "We will update this all soon!", challonge:"https://challonge.com/de/pwxhs9s0", time: "8 PM CEST"}],
   [],
   [],
   [{name: "LEVO 2", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1-2", time: "5 PM CEST"}],
