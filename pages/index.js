@@ -76,7 +76,7 @@ export default function Home() {
   }
 
   return (
-    <ScrollContainer style={{backgroundColor: 'black'}}>
+    <ScrollContainer style={{backgroundColor: '#0b0b0e'}}>
       <div className={styles.container}>
         <Head>
           <title>SSBM EU Tournaments</title>
