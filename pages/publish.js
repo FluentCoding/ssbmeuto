@@ -7,7 +7,7 @@ const LoginContainer = (props) => (<>
     <div style={{border: '3px solid white', borderRadius: 30, padding: 50}}>
     {Object.values(props.providers).map(provider => (
         <div key={provider.name}>
-          <a style={{fontSize: 24, backgroundColor: '#7289DA', padding: 15, borderRadius: 3}} onClick={() => signIn(provider.id)}>Sign in with {provider.name}</a>
+          <a style={{fontSize: 24, padding: 15, borderRadius: 3}} onClick={() => signIn(provider.id)}>Sign in with {provider.name}</a>
         </div>
       ))}
     </div>
