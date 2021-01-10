@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #0b0b0e;
+  color: white;
+}
+
+.container a {
+  cursor: pointer;
+}

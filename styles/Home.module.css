@@ -4,7 +4,6 @@
   display: flex;
   font-family: 'Roboto';
   padding: 100px;
-  user-select: none;
   min-height: 100vh;
   cursor: grab;
 }

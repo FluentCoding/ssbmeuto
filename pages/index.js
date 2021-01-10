@@ -14,7 +14,7 @@ const TournamentDay = (props) => (
 
 const TournamentContainer = (props) => (<>
   <div className={styles.tournament_container}>
-    {props.name}
+    <span>{props.name}</span>
     {props.time && <>
     <div style={{marginTop: 25}} />
     <Image src="/clock.png" width="24" height="24" />
