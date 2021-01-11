@@ -25,13 +25,13 @@ export default async(req, res) => {
             delete body.smashgg;
         } else {
             if (!hasHttpPrefix(body.smashgg))
-                body.challonge = "https://" + body.smashgg;
+                body.smashgg = "https://" + body.smashgg;
         }
         if (!body.discord) {
             delete body.discord;
         } else {
             if (!hasHttpPrefix(body.discord))
-                body.challonge = "https://" + body.discord;
+                body.discord = "https://" + body.discord;
         }
 
         if ((!body.name || !body.authorId) || !body.challonge && !body.smashgg && !body.discord) {
