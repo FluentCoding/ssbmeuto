@@ -8,10 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "mongoose": "^5.11.11",
     "next": "10.0.5",
     "next-auth": "^3.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-indiana-drag-scroll": "^1.8.0"
+    "react-indiana-drag-scroll": "^1.8.0",
+    "swr": "^0.4.0"
   }
 }

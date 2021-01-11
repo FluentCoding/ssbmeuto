@@ -1,0 +1,56 @@
+  .modal {
+    width: 80%;
+    border: 1px solid #ccc;
+    margin-top: 50px;
+    font-family: 'Roboto';
+    font-size: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+  }
+  .modal input {
+    padding: 5px;
+    font-size: 16px;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+  }
+  .modal h2 {
+    border-bottom: 1px solid #ccc;
+    padding: 1rem;
+    margin: 0;
+  }
+  .modal .actions {
+    margin-top: 25px;
+  }
+  .modal .actions:last-child {
+      margin-right: 0;
+  }
+  .modal .actions button {
+    transition: 0.1s ease-in-out;
+    border: 1px solid white;
+    background: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    color: white;
+    line-height: 1;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  .modal .actions button:hover {
+    color: #C7493A;
+    border: 1px solid #C7493A;
+  }
+
+  .modal select {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+      margin-right: 10px;
+      height: 34px;
+  }
+
+  .modal option {
+      color: black;
+  }

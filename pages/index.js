@@ -3,6 +3,8 @@ import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import Image from 'next/image'
+import { dayNames } from '../global/Global.js'
+import useSwr from 'swr'
 
 const TournamentDay = (props) => (
   <div className={styles.column}>
@@ -40,21 +42,14 @@ const TournamentContainer = (props) => (<>
   </div>
 </>);
 
-const names = [
-  "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-]
-
-const tournaments = [
-  [],
-  [{name: "We will update this all soon! Example tournament:", challonge:"https://challonge.com/de/pwxhs9s0", time: "8 PM CEST"}],
-  [],
-  [],
-  [{name: "LEVO 2", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-2", time: "5 PM CEST"}],
-  [{name: "LEVO 1", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1", time: "5 PM CEST"}],
-  []
-];
+const fetcher = (url) => fetch(url).then((res) => res.json())
 
 export default function Home() {
+  const { data, error } = useSwr('/api/tournaments', fetcher, {refreshInterval: 1000 * 60 * 20})
+
+  if (error) return <>{error}</>;
+  if (!data) return null;
+
   const items = [];
   var currentDay = new Date().getDay();
   if (currentDay == 0)
@@ -64,8 +59,8 @@ export default function Home() {
   var i = currentDay;
 
   while(true) {
-    items.push(<TournamentDay day={i == currentDay ? "Today" : names[i]} tournaments={
-        tournaments[i].map((value) => <TournamentContainer name={value.name} discord={value.discord} challonge={value.challonge} smashgg={value.smashgg} time={value.time} />)
+    items.push(<TournamentDay day={i == currentDay ? "Today" : dayNames[i]} tournaments={
+        data.data[i].map((value) => <TournamentContainer name={value.name} discord={value.discord} challonge={value.challonge} smashgg={value.smashgg} time={value.time} />)
     } />);
     if (i === lastDayToIterate)
       break;

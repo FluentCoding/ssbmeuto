@@ -11,6 +11,27 @@
   color: white;
 }
 
-.container a {
+.dashboard_container {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto';
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0b0b0e;
+  color: white;
+  padding: 50px;
+}
+
+.button {
   cursor: pointer;
+  user-select: none;
+  border: 3px solid #d9d9d9;
+  padding: 20px;
+  color: #d9d9d9
+}
+
+.button:hover {
+  transition: 0.2s ease-in-out;
+  color: #C7493A;
+  border: 3px solid #C7493A;
 }
