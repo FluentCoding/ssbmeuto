@@ -41,7 +41,7 @@ export default async(req, res) => {
 
         await dbConnect();
         try {
-            const count = await Tournament.count({authorId: body.authorId});
+            const count = await Tournament.count({authorId: body.authorId, state: 2});
             if (count >= 10) {
                 res.status(201).json({error: "You already have 10 submissions! You have to remove your tournaments before putting new ones!"});
                 return;
