@@ -29,8 +29,9 @@ export default async(req, res) => {
         var end = new Date(start);
         end.setDate(end.getDate() + 7);
 
-        const yourTournaments = await Tournament.find({state: 2, datetime: {$gte: start.getTime(), $lt: end.getTime()}})
-        const result = [[], [], [], [], [], [], []]
+        const yourTournaments = await Tournament.find({state: 2, datetime: {$gte: start.getTime(), $lt: end.getTime()}});
+        yourTournaments.sort((a, b) => a.datetime > b.datetime ? 1 : -1);
+        const result = [[], [], [], [], [], [], []];
         var i = new Date(start);
         result.forEach(holder => {
             var i2 = new Date(i);
