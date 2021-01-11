@@ -53,3 +53,12 @@
   margin-right: 10px;
   cursor: pointer;
 }
+
+.add_button {
+  transition: 0.1s ease-in-out;
+}
+
+.add_button:hover {
+  background-color: lightgreen;
+  color: black;
+}

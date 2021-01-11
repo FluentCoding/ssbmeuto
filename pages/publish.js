@@ -95,6 +95,7 @@ const DashboardTournamentCreationContainer = (props) => {
             <TournamentFormContainer header="Date and Time">
                 <input type="datetime-local" onChange={() => setDatetime(event.target.value)} value={datetime} style={{backgroundColor: 'white', color: 'black'}} />
                 <span style={{fontSize: 14, marginLeft: 10}}>Your time will be converted into CET! CET time right now is <u><CETTime /></u>.</span>
+                <span style={{fontSize: 14, marginLeft: 10}}>Also, if you are using Firefox or you don't see the date/time picker, please use chrome for the submission. <u><CETTime /></u>.</span>
             </TournamentFormContainer>
             <div style={{marginTop: 15, fontSize: 16, color: 'darkred'}}>
                 {error}

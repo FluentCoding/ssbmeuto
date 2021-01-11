@@ -72,6 +72,11 @@ export default function Home() {
 
   return (
     <ScrollContainer style={{backgroundColor: '#0b0b0e'}}>
+      <Link href={"/publish"}>
+          <a target="_blank" className={[styles.link_button, styles.add_button].join(" ")} style={{position: 'absolute', top: 20, right: 20, maxWidth: 300, border: '3px solid lightgreen'}} rel="noreferrer">
+            Add your tournaments
+          </a>
+      </Link>
       <div className={styles.container}>
         <Head>
           <title>SSBM EU Tournaments</title>
