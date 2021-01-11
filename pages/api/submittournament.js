@@ -23,7 +23,6 @@ export default async(req, res) => {
             delete body.discord;
         }
 
-        console.log(body);
         if ((!body.name || !body.authorId) || !body.challonge && !body.smashgg && !body.discord) {
             res.status(400).json({error: "Fields were missing!"});
             return;

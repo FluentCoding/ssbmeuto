@@ -30,7 +30,7 @@ export default async(req, res) => {
         end.setDate(end.getDate() + 7);
 
         const yourTournaments = await Tournament.find({state: 2, datetime: {$gte: start.getTime(), $lt: end.getTime()}});
-        yourTournaments.sort((a, b) => a.datetime < b.datetime ? 1 : -1);
+        yourTournaments.sort((a, b) => a.datetime > b.datetime ? 1 : -1);
         const result = [[], [], [], [], [], [], []];
         var i = new Date(start);
         result.forEach(holder => {
@@ -40,7 +40,8 @@ export default async(req, res) => {
             yourTournaments.forEach(tournament => {
                 if (tournament.datetime >= i.getTime() && tournament.datetime < i2.getTime()) {
                     var d = new Date(tournament.datetime);
-                    var toPush = {name: tournament.name, time: twoDigitFix(d.getHours()) + ":" + twoDigitFix(d.getMinutes()) + " CET"};
+                    d.setUTCHours(d.getUTCHours() + 1);
+                    var toPush = {name: tournament.name, time: twoDigitFix(d.getUTCHours()) + ":" + twoDigitFix(d.getMinutes()) + " CET"};
                     if (tournament.discord) {
                         toPush["discord"] = tournament.discord;
                     }
