@@ -11,7 +11,7 @@ const DashboardContainer = (props) => {
         return "Error!";
     }
     if (!data) {
-        return <div className={styles.container} />
+        return <div className={styles.container} style={{backgroundColor: '#0b0b0e'}} />
     }
 
     return (
@@ -67,7 +67,7 @@ const DashboardContainer = (props) => {
         </div>);
     };
 
-export default function Publish() {
+export default function ACP() {
     const router = useRouter()
     const { id } = router.query
 
@@ -79,3 +79,8 @@ export default function Publish() {
         <DashboardContainer />
     )
 }
+
+ACP.getInitialProps = async ({ req, res }) => {
+    res.statusCode = 403;
+    res.end('Not allowed');
+};
