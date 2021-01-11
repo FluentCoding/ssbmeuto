@@ -4,6 +4,7 @@
   display: flex;
   font-family: 'Roboto';
   padding: 100px;
+  padding-top: 120px;
   min-height: 100vh;
   cursor: grab;
 }
@@ -30,7 +31,7 @@
 }
 
 .tournament_container {
-  border: 3px solid white;
+  border: 3px solid #d9d9d9;
   border-radius: 30px;
   font-size: 28px;
   color: #d9d9d9;
@@ -56,6 +57,8 @@
 
 .add_button {
   transition: 0.1s ease-in-out;
+  font-size: 16px;
+  color: #d9d9d9;
 }
 
 .add_button:hover {
