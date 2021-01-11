@@ -29,14 +29,14 @@ const TournamentContainer = (props) => (<>
         <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#FF9152'}}>Challonge</a>
       </Link>
     }
-    {props.discord &&
-      <Link href={props.discord}>
-        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#7289DA'}}>Discord</a>
-      </Link>
-    }
     {props.smashgg &&
       <Link href={props.smashgg}>
         <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#CB333B'}}>SmashGG</a>
+      </Link>
+    }
+    {props.discord &&
+      <Link href={props.discord}>
+        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#7289DA'}}>Discord</a>
       </Link>
     }
   </div>
