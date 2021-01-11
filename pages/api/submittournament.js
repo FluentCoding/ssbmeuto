@@ -2,6 +2,8 @@ import dbConnect from '../../utils/dbConnect'
 import Tournament from '../../models/Tournament'
 import { CETDate } from '../../global/Global'
 
+const hasHttpPrefix = (input) => input.startsWith("http://") || input.startsWith("https://");
+
 export default async(req, res) => {
     if (req.method === 'POST') {
         var body = JSON.parse(req.body);
@@ -15,12 +17,21 @@ export default async(req, res) => {
         }
         if (!body.challonge) {
             delete body.challonge;
+        } else {
+            if (!hasHttpPrefix(body.challonge))
+                body.challonge = "https://" + body.challonge;
         }
         if (!body.smashgg) {
             delete body.smashgg;
+        } else {
+            if (!hasHttpPrefix(body.smashgg))
+                body.challonge = "https://" + body.smashgg;
         }
         if (!body.discord) {
             delete body.discord;
+        } else {
+            if (!hasHttpPrefix(body.discord))
+                body.challonge = "https://" + body.discord;
         }
 
         if ((!body.name || !body.authorId) || !body.challonge && !body.smashgg && !body.discord) {
