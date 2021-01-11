@@ -95,7 +95,7 @@ const DashboardTournamentCreationContainer = (props) => {
             <TournamentFormContainer header="Discord link (optional)"><input onChange={() => setDiscordURL(event.target.value)} value={discordURL} placeholder="discord.gg/..." /></TournamentFormContainer>
             <TournamentFormContainer header="Date and Time">
                 <input type="datetime-local" onChange={() => setDatetime(event.target.value)} value={datetime} style={{backgroundColor: 'white', color: 'black'}} />
-                <span style={{fontSize: 14, marginLeft: 10}}>Time should be in CET! CET time right now is <u><CETTime /></u>.</span>
+                <span style={{fontSize: 14, marginLeft: 10}}>Your time will be converted into CET! CET time right now is <u><CETTime /></u>.</span>
             </TournamentFormContainer>
             <div style={{marginTop: 15, fontSize: 16, color: 'darkred'}}>
                 {error}
