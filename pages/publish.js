@@ -33,7 +33,7 @@ const VerificationBadge = (props) => {
 
 const CETTime = () => {
     var d = CETDate();
-    return d.getHours() + ":" + d.getMinutes();
+    return twoDigitFix(d.getHours()) + ":" + twoDigitFix(d.getMinutes());
 };
 
 const TournamentFormContainer = (props) => (
@@ -129,7 +129,7 @@ const DashboardContainer = (props) => {
                         var tournamentId = value._id;
                         return (
                         <div style={{border: '2px solid lightgray', color: 'lightgray', padding: 10, marginBottom: index == data.data.length - 1 ? 0 : 10}}>
-                            <u>Name:</u> {value.name}, <u>Datetime:</u> {d.toDateString()} {twoDigitFix(d.getHours())}:{twoDigitFix(d.getMinutes())} CET Time
+                            <u>Name:</u> {value.name}, <u>Datetime:</u> {d.toDateString()} {twoDigitFix(d.getUTCHours() + 1)}:{twoDigitFix(d.getUTCMinutes())} CET Time
                             {value.discord && (<div><u>Discord:</u>{value.discord}</div>)}
                             {value.smashgg && (<div><u>SmashGG:</u> {value.smashgg}</div>)}
                             {value.challonge && (<div><u>Challonge: </u> + {value.challonge}</div>)}
