@@ -3,7 +3,7 @@
 .container {
   display: flex;
   font-family: 'Roboto';
-  padding: 100px;
+  padding: 50px;
   padding-top: 120px;
   min-height: 100vh;
   cursor: grab;
@@ -17,13 +17,8 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  margin-right: 40px;
-  min-width: 270px;
-}
-
-.column::-webkit-scrollbar {
-  width: 0;
-  height: 0;
+  margin-right: 20px;
+  min-width: 230px;
 }
 
 .column > :last-child {
@@ -35,7 +30,7 @@
   border-radius: 30px;
   font-size: 28px;
   color: #d9d9d9;
-  padding: 50px;
+  padding: 25px;
   margin-bottom: 25px;
 }
 
@@ -49,9 +44,9 @@
   padding: 20px;
   color: white;
   font-size: 18px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-bottom: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
   cursor: pointer;
 }
 

@@ -8,7 +8,7 @@ import useSwr from 'swr'
 
 const TournamentDay = (props) => (
   <div className={styles.column}>
-    <div style={{color: '#C7493A', fontSize: props.day === "Today" ? 72 : 42, lineHeight: '72px'}}>{props.day}</div>
+    <div style={{color: '#C7493A', fontSize: 38}}>{props.day}</div>
     <div style={{marginTop: 100}} />
     {props.tournaments}
   </div>
@@ -23,7 +23,7 @@ const TournamentContainer = (props) => (<>
     <div style={{marginTop: 5}} />
     <div style={{fontSize: 18}}>{props.time}</div>
     </>}
-    <div style={{marginTop: 50}} />
+    <div style={{marginTop: 30}} />
     {props.challonge &&
       <Link href={props.challonge}>
         <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#FF9152'}}>Challonge</a>
