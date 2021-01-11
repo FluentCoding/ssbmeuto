@@ -63,7 +63,6 @@ const DashboardTournamentCreationContainer = (props) => {
         error = "The date and time you have specified is before the current CET time!";
     } else {
         error = "";
-        console.log(new Date(datetime).getTime());
     }
 
     return (<>

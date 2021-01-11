@@ -21,7 +21,7 @@ const DashboardContainer = (props) => {
             <div style={{display: 'flex'}}>
                 <div style={{border: '3px solid lightgray', padding: 30, minWidth: '75vw'}}>
                     {
-                    data.data.length === 0 ? <span style={{color: 'lightgray'}}>No tournaments created yet</span> :
+                    data.data.length === 0 ? <span style={{color: 'lightgray'}}>No new tournaments submitted yet</span> :
                     <>
                     {data.data.map((value, index) => {
                         var d = new Date(Number(value.datetime));
