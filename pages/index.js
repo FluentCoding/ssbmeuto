@@ -1,16 +1,18 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
-import ScrollContainer from 'react-indiana-drag-scroll'
 import Image from 'next/image'
 import { dayNames } from '../global/Global.js'
 import useSwr from 'swr'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 const TournamentDay = (props) => (
   <div className={styles.column}>
     <div style={{color: '#C7493A', fontSize: 38}}>{props.day}</div>
     <div style={{marginTop: 100}} />
-    {props.tournaments}
+    <div className={styles.scroll} style={{overflowY: 'auto', height: 'calc(100% - 100px)'}}>
+        {props.tournaments}
+    </div>
   </div>
 );
 
@@ -71,7 +73,7 @@ export default function Home() {
   }
 
   return (
-    <ScrollContainer style={{backgroundColor: '#0b0b0e'}}>
+    <ScrollContainer style={{backgroundColor: '#0b0b0e', minHeight: '100vh'}}>
       <Link href={"/publish"}>
           <a target="_blank" className={[styles.link_button, styles.add_button].join(" ")}
             style={{position: 'absolute', top: 20, right: 20, maxWidth: 300, border: '3px solid lightgreen'}} rel="noreferrer">
