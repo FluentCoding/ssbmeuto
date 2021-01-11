@@ -1,5 +1,6 @@
 import dbConnect from '../../utils/dbConnect'
 import Tournament from '../../models/Tournament'
+import { twoDigitFix } from '../../global/Global'
 
 const tournaments = [
     [],
@@ -10,13 +11,6 @@ const tournaments = [
     [{name: "LEVO 1", discord: "https://discord.gg/gN5ve7H", smashgg: "https://smash.gg/tournament/levo-eu-1", time: "5 PM CET"}],
     []
 ];
-
-function twoDigitFix(i) {
-    if (i < 10) {
-      i = "0" + i;
-    }
-    return i;
-  }
 
 export default async(req, res) => {
     await dbConnect();

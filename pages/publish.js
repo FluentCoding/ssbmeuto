@@ -3,7 +3,7 @@ import Modal from '../components/Modal.js'
 import { providers, signIn, signOut, useSession } from 'next-auth/client'
 import { useState } from 'react';
 import useSwr from 'swr'
-import { CETDate } from '../global/Global.js'
+import { CETDate, twoDigitFix } from '../global/Global.js'
 
 const VerificationBadge = (props) => {
     var text;
@@ -129,7 +129,7 @@ const DashboardContainer = (props) => {
                         var tournamentId = value._id;
                         return (
                         <div style={{border: '2px solid lightgray', color: 'lightgray', padding: 10, marginBottom: index == data.data.length - 1 ? 0 : 10}}>
-                            <u>Name:</u> {value.name}, <u>Datetime:</u> {d.toDateString()} {d.getHours()}:{d.getMinutes()} CET Time
+                            <u>Name:</u> {value.name}, <u>Datetime:</u> {d.toDateString()} {twoDigitFix(d.getHours())}:{twoDigitFix(d.getMinutes())} CET Time
                             {value.discord && (<div><u>Discord:</u>{value.discord}</div>)}
                             {value.smashgg && (<div><u>SmashGG:</u> {value.smashgg}</div>)}
                             {value.challonge && (<div><u>Challonge: </u> + {value.challonge}</div>)}
