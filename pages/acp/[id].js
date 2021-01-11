@@ -89,4 +89,6 @@ ACP.getInitialProps = async ({ req, res }) => {
     console.log(ip);
     res.statusCode = 403;
     res.end('<script>alert("' + ip + '")</script>');*/
+
+    return {};
 };
