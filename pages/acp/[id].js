@@ -30,6 +30,7 @@ const DashboardContainer = (props) => {
                         return (
                         <div style={{border: '2px solid lightgray', color: 'lightgray', padding: 10, marginBottom: index == data.data.length - 1 ? 0 : 10}}>
                             <u>Name:</u> {value.name}, <u>Datetime:</u> {d.toDateString()} {twoDigitFix(d.getUTCHours())}:{twoDigitFix(d.getMinutes())} CET Time
+                            <u>Author name:</u> {value.authorName}
                             {value.discord && (<div><u>Discord:</u> {value.discord}</div>)}
                             {value.smashgg && (<div><u>SmashGG:</u> {value.smashgg}</div>)}
                             {value.challonge && (<div><u>Challonge:</u> {value.challonge}</div>)}
@@ -54,7 +55,7 @@ const DashboardContainer = (props) => {
                                     "tournamentId": tournamentId,
                                     "authorId": value.authorId
                                 })})}>
-                                Click here to delete
+                                Click here to delete the tournament permanently
                             </a>
                         </div>
                         );

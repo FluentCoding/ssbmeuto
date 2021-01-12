@@ -41,10 +41,14 @@ export default async(req, res) => {
         await dbConnect();
 
         try {
-            const yourTournaments = await Tournament.find({state: 0})
-            res.status(201).json({success: true, data: yourTournaments})
+            const yourTournaments = await Tournament.find({state: 0});
+
+            if (yourTournaments.authorId)
+                delete yourTournaments.authorId;
+
+            res.status(201).json({success: true, data: yourTournaments});
         } catch(error) {
-            res.status(400).json({success: false})
+            res.status(400).json({success: false});
         }
     }
 }
