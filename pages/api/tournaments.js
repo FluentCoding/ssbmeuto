@@ -1,6 +1,6 @@
 import dbConnect from '../../utils/dbConnect'
 import Tournament from '../../models/Tournament'
-import { twoDigitFix } from '../../global/Global'
+import { twoDigitFix, CETDate } from '../../global/Global'
 
 const tournaments = [
     [],
@@ -18,7 +18,7 @@ export default async(req, res) => {
     try {
         await Tournament.deleteMany({state: {$lt: 2}, datetime: {$lt: new Date().getTime() - (1000 * 60 * 60 * 24 * 7)}})
 
-        var start = new Date();
+        var start = CETDate();
         start.setHours(0, 0, 0, 0);
         var end = new Date(start);
         end.setDate(end.getDate() + 7);
