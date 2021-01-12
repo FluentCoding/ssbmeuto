@@ -59,10 +59,11 @@ export default function Home() {
   currentDay--;
   const lastDayToIterate = currentDay === 0 ? 6 : currentDay - 1;
   var i = currentDay;
+  var increment = 0;
 
   while(true) {
     items.push(<TournamentDay day={i == currentDay ? "Today" : dayNames[i]} tournaments={
-        data.data[i].map((value) => <TournamentContainer name={value.name} discord={value.discord} challonge={value.challonge} smashgg={value.smashgg} time={value.time} />)
+        data.data[increment].map((value) => <TournamentContainer name={value.name} discord={value.discord} challonge={value.challonge} smashgg={value.smashgg} time={value.time} />)
     } />);
     if (i === lastDayToIterate)
       break;
@@ -70,6 +71,7 @@ export default function Home() {
       i = 0;
     else
       i++;
+    increment++;
   }
 
   return (

@@ -27,6 +27,7 @@ export default async(req, res) => {
         yourTournaments.sort((a, b) => a.datetime > b.datetime ? 1 : -1);
         const result = [[], [], [], [], [], [], []];
         var i = new Date(start);
+        var increment = 0;
         result.forEach(holder => {
             var i2 = new Date(i);
             i2.setDate(i.getDate() + 1);
@@ -51,8 +52,8 @@ export default async(req, res) => {
             });
 
             i = i2;
+            increment++;
         });
-
         res.status(201).json({data: result})
     } catch(error) {
         console.log(error);
