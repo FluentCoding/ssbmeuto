@@ -5,6 +5,26 @@ import Image from 'next/image'
 import { dayNames } from '../global/Global.js'
 import useSwr from 'swr'
 import ScrollContainer from 'react-indiana-drag-scroll'
+import { useState } from 'react'
+
+const Logo = () => {
+  const [ showInfo, setShowInfo ] = useState(false);
+
+  return (
+    <div style={{position: 'fixed', top: 10, left: 10}} onMouseLeave={() => setShowInfo(false)}>
+      <Image src="/logo.png" width="100" height="100" onMouseEnter={() => setShowInfo(true)} />
+      <div
+        style={{boxShadow: 'rgba(255, 255, 255, 0.24) 0px 3px 8px', transition: '0.1s ease-in-out', visibility: showInfo ? 'visible' : 'hidden', opacity: showInfo ? 1 : 0, width: 300, height: 275, border: '3px solid gray', backgroundColor: 'rgba(0, 0, 0, 0.8)', color: 'white', borderRadius: 20, padding: 20, textAlign: 'center'}}>
+        <span style={{fontSize: 28, color: '#C7493A'}}>SSBM EU</span>
+        <div style={{fontSize: 16}}>This is the central online tournament schedule for the european Super Smash Bros. Melee scene. Here, you can find european tournaments that ensure a great low-ping experience.</div>
+        <div style={{margin: 20}} />
+        <Link href="https://discord.gg/PBZNzg6eyF">
+          <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#7289DA'}}>Our Discord</a>
+        </Link>
+      </div>
+    </div>
+  );
+};
 
 const TournamentDay = (props) => (
   <div className={styles.column}>
@@ -76,9 +96,7 @@ export default function Home() {
 
   return (
     <ScrollContainer style={{backgroundColor: '#0b0b0e', minHeight: '100vh'}}>
-      <div style={{position: 'fixed', top: 10, left: 10}}>
-        <Image src="/logo.png" width="100" height="100" />
-      </div>
+      <Logo />
       <Link href={"/publish"}>
           <a target="_blank" className={[styles.link_button, styles.add_button].join(" ")}
             style={{position: 'absolute', top: 20, right: 20, maxWidth: 300, border: '3px solid lightgreen'}} rel="noreferrer">
