@@ -50,7 +50,7 @@ export default function Home() {
   const { data, error } = useSwr('/api/tournaments', fetcher, {refreshInterval: 1000 * 60 * 20})
 
   if (error) return <>{error}</>;
-  if (!data) return <div className={styles.container} style={{backgroundColor: '#0b0b0e'}} />;
+  if (!data) return <div style={{width: '100vw', minHeight: '100vh', backgroundColor: '#0b0b0e'}} />;
 
   const items = [];
   var currentDay = new Date().getDay();
