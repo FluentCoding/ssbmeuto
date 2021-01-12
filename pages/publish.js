@@ -1,4 +1,5 @@
 import styles from '../styles/Publish.module.css'
+import Head from 'next/head'
 import Modal from '../components/Modal.js'
 import { providers, signIn, signOut, useSession } from 'next-auth/client'
 import { useState } from 'react';
@@ -172,8 +173,13 @@ export default function Publish({providers}) {
     if (loading)
         return <div className={styles.container} />
 
-    return (
-        session ? <DashboardContainer name={session.user.name} accessToken={session.user.email} /> : <LoginContainer providers={providers} />
+    return (<>
+        <Head>
+          <title>Publish - SSBM EU Tournaments</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
+        {session ? <DashboardContainer name={session.user.name} accessToken={session.user.email} /> : <LoginContainer providers={providers} />}
+    </>
     )
 }
 
