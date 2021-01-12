@@ -140,7 +140,7 @@ const DashboardContainer = (props) => {
                                     "tournamentId": tournamentId,
                                     "authorId": props.accessToken
                                 })})}>
-                                Click here to delete
+                                Click here to delete the tournament permanently
                             </a>
                         </div>
                         );
