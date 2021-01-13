@@ -14,9 +14,9 @@ const Logo = () => {
     <div style={{position: 'fixed', top: 10, left: 10}} onMouseLeave={() => setShowInfo(false)}>
       <Image src="/logo.png" width="100" height="100" onMouseEnter={() => setShowInfo(true)} />
       <div
-        style={{boxShadow: 'rgba(255, 255, 255, 0.24) 0px 3px 8px', transition: 'opacity 0.1s ease-in-out', overflow: 'hidden', visibility: showInfo ? 'visible' : 'hidden', opacity: showInfo ? 1 : 0, width: 300, height: showInfo ? 275 : 0, border: '3px solid gray', backgroundColor: 'rgba(0, 0, 0, 0.8)', color: 'white', borderRadius: 20, padding: 20, textAlign: 'center'}}>
+        style={{boxShadow: 'rgba(255, 255, 255, 0.24) 0px 3px 8px', transition: 'opacity 0.1s ease-in-out', overflow: 'hidden', visibility: showInfo ? 'visible' : 'hidden', opacity: showInfo ? 1 : 0, width: 300, height: showInfo ? 250 : 0, border: '3px solid gray', backgroundColor: 'rgba(0, 0, 0, 0.8)', color: 'white', borderRadius: 20, padding: 20, textAlign: 'center'}}>
         <div style={{fontSize: 28, color: '#C7493A', marginBottom: 10}}>SSBM EU</div>
-        <div style={{fontSize: 16}}>This is the central online tournament schedule for the european Super Smash Bros. Melee scene. Here, you can find european tournaments that ensure a great low-ping experience.</div>
+        <div style={{fontSize: 16}}>Here you'll find a schedule for weekly EU Online Melee tournaments. Join the Discord to meet our community and find games.</div>
         <div style={{margin: 15}} />
         <Link href="https://discord.gg/PBZNzg6eyF">
           <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#7289DA'}}>Our Discord</a>
