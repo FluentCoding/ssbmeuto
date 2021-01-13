@@ -9,6 +9,12 @@
   max-height: 100vh;
 }
 
+@media screen and (max-width: 1920px) {
+  .container {
+    cursor: default;
+  }
+}
+
 .container > :last-child {
   margin-right: 0;
 }
