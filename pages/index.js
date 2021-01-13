@@ -99,7 +99,7 @@ export default function Home() {
       <Logo />
       <Link href={"/publish"}>
           <a target="_blank" className={[styles.link_button, styles.add_button].join(" ")}
-            style={{position: 'absolute', top: 10, right: 10, maxWidth: 300, border: '3px solid lightgreen'}} rel="noreferrer">
+            style={{position: 'absolute', top: 20, right: 20, margin: 0, maxWidth: 300, border: '3px solid lightgreen'}} rel="noreferrer">
             Add your tournaments
           </a>
       </Link>
