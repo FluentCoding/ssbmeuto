@@ -44,7 +44,7 @@ const TournamentFormContainer = (props) => (
     </>
 );
 
-const DashboardTournamentCreationContainer = (props) => {
+const DashboardTournamentCreationContainer = () => {
     const [ show, setShow ] = useState(false);
     var error = "";
 
@@ -76,9 +76,7 @@ const DashboardTournamentCreationContainer = (props) => {
                     "datetime": new Date(datetime).getTime(),
                     "challonge": challongeURL,
                     "smashgg": smashggURL,
-                    "discord": discordURL,
-                    "authorId": props.accessToken,
-                    "authorName": props.name
+                    "discord": discordURL
                 })}).then(res => res.json()).then(data => {
                     if (data.error) {
                         alert(data.error);
@@ -107,7 +105,7 @@ const DashboardTournamentCreationContainer = (props) => {
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 const DashboardContainer = (props) => {
-    const { data, error } = useSwr('/api/yourtournaments/' + props.accessToken, fetcher, {refreshInterval: 1000})
+    const { data, error } = useSwr('/api/yourtournaments', fetcher, {refreshInterval: 1000})
 
     if (error) {
         return "Error!";
@@ -137,10 +135,7 @@ const DashboardContainer = (props) => {
                             {value.challonge && (<div><u>Challonge:</u> {value.challonge}</div>)}
                             <VerificationBadge state={value.state} />
                             <a style={{display: 'inline-block', padding: 10, backgroundColor: 'red', color: 'black', borderRadius: 90, fontSize: 14, cursor: 'pointer'}}
-                                onClick={() => fetch('/api/removetournament', {method: 'POST', body: JSON.stringify({
-                                    "tournamentId": tournamentId,
-                                    "authorId": props.accessToken
-                                })})}>
+                                onClick={() => fetch('/api/removetournament/' + tournamentId)}>
                                 Click here to delete the tournament permanently
                             </a>
                         </div>
@@ -151,7 +146,7 @@ const DashboardContainer = (props) => {
                 </div>
             </div>
             <div style={{marginTop: 100}} />
-            <DashboardTournamentCreationContainer name={props.name} accessToken={props.accessToken} />
+            <DashboardTournamentCreationContainer />
         </div>);
     };
 
