@@ -5,7 +5,7 @@ import Tournament from '../../../models/Tournament'
 export default async(req, res) => {
     const session = await getSession({ req });
 
-    if (!session.user.email) {
+    if (!session.user?.email) {
         res.status(400).json({error: "Please re-login!"});
         return;
     }

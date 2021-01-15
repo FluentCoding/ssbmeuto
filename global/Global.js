@@ -15,5 +15,3 @@ export const twoDigitFix = (i) => {
     }
     return i;
 };
-
-export const acp = 'nOfoeG1WY9YRgHZI';

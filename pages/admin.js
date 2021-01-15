@@ -1,17 +1,22 @@
-import styles from '../../styles/Publish.module.css'
-import { useRouter } from 'next/router'
-import useSwr from 'swr'
-import { acp, twoDigitFix } from '../../global/Global'
+import styles from '../styles/Publish.module.css'
+import useSwr, { mutate } from 'swr'
+import Head from 'next/head'
+import { twoDigitFix } from '../global/Global'
+import { providers, signIn, useSession } from 'next-auth/client'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 const DashboardContainer = (props) => {
-    const { data, error } = useSwr('/api/unmanagedtournaments/' + acp, fetcher, {refreshInterval: 1000})
+    const { data, error } = useSwr('/api/unmanagedtournaments/', fetcher, {refreshInterval: 10000})
 
     if (error) {
         return "Error!";
     }
     if (!data) {
         return <div className={styles.container} style={{backgroundColor: '#0b0b0e'}} />
+    }
+
+    if (data.error) {
+        return "You're not an admin!";
     }
 
     return (
@@ -35,26 +40,32 @@ const DashboardContainer = (props) => {
                             {value.smashgg && (<div><u>SmashGG:</u> {value.smashgg}</div>)}
                             {value.challonge && (<div><u>Challonge:</u> {value.challonge}</div>)}
                             <a style={{display: 'inline-block', padding: 10, backgroundColor: 'lightgreen', color: 'black', borderRadius: 90, marginLeft: 10, fontSize: 14, cursor: 'pointer'}}
-                                onClick={() => fetch('/api/unmanagedtournaments/' + acp, {method: 'POST', body: JSON.stringify({
+                                onClick={() => {
+                                    fetch('/api/unmanagedtournaments/', {method: 'POST', body: JSON.stringify({
                                     "tournamentId": tournamentId,
                                     "authorId": value.authorId,
                                     "action": "ACCEPT"
-                                })})}>
+                                    })}).then(res => mutate('/api/unmanagedtournaments/'));
+                                }}>
                                 Accept
                             </a>
                             <a style={{display: 'inline-block', padding: 10, backgroundColor: 'red', color: 'black', borderRadius: 90, margin: 10, fontSize: 14, cursor: 'pointer'}}
-                                onClick={() => fetch('/api/unmanagedtournaments/' + acp, {method: 'POST', body: JSON.stringify({
+                                onClick={() => {
+                                    fetch('/api/unmanagedtournaments/', {method: 'POST', body: JSON.stringify({
                                     "tournamentId": tournamentId,
                                     "authorId": value.authorId,
                                     "action": "DECLINE"
-                                })})}>
+                                })}).then(res => mutate('/api/unmanagedtournaments/'));
+                                }}>
                                 Decline
                             </a>
                             <a style={{display: 'inline-block', padding: 10, backgroundColor: 'red', color: 'black', borderRadius: 90, fontSize: 14, cursor: 'pointer'}}
-                                onClick={() => fetch('/api/removetournament', {method: 'POST', body: JSON.stringify({
+                                onClick={() => {
+                                    fetch('/api/removetournament', {method: 'POST', body: JSON.stringify({
                                     "tournamentId": tournamentId,
                                     "authorId": value.authorId
-                                })})}>
+                                    })}).then(res => mutate('/api/unmanagedtournaments/'));
+                                }}>
                                 Click here to delete the tournament permanently
                             </a>
                         </div>
@@ -68,28 +79,35 @@ const DashboardContainer = (props) => {
         </div>);
     };
 
-export default function ACP() {
-    const router = useRouter()
-    const { id } = router.query
+const LoginContainer = (props) => (
+    <div className={styles.container}>
+        <span style={{fontSize: 48, color: '#C7493A'}}>Log in</span>
+        <div style={{marginTop: 100}} />
+        {Object.values(props.providers).map(provider => (
+        <div key={provider.name}>
+            <a className={styles.button} style={{fontSize: 24, padding: 20, borderRadius: 3}} onClick={() => signIn(provider.id)}>Sign in with {provider.name}</a>
+        </div>
+        ))}
+    </div>
+);
+export default function Admin({providers}) {
+    const [ session, loading ] = useSession()
 
-    if (id !== acp) {
-        return null;
-    }
+    if (loading)
+        return <div className={styles.container} />
 
-    return (
-        <DashboardContainer />
+    return (<>
+        <Head>
+          <title>Admin - SSBM EU Tournaments</title>
+          <link rel="icon" href="/logo.png" />
+        </Head>
+        {session ? <DashboardContainer name={session.user.name} accessToken={session.user.email} /> : <LoginContainer providers={providers} />}
+    </>
     )
 }
 
-ACP.getInitialProps = async ({ req, res }) => {
-    /*var ip = req.headers['x-forwarded-for'] || 
-     req.connection.remoteAddress || 
-     req.socket.remoteAddress ||
-     (req.connection.socket ? req.connection.socket.remoteAddress : null);
-
-    console.log(ip);
-    res.statusCode = 403;
-    res.end('<script>alert("' + ip + '")</script>');*/
-
-    return {};
-};
+Admin.getInitialProps = async (context) => {
+    return {
+      providers: await providers(context)
+    }
+}

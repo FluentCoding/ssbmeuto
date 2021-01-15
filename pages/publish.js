@@ -1,9 +1,9 @@
 import styles from '../styles/Publish.module.css'
 import Head from 'next/head'
 import Modal from '../components/Modal.js'
-import { providers, signIn, signOut, useSession } from 'next-auth/client'
+import { providers, signIn, useSession } from 'next-auth/client'
 import { useState } from 'react';
-import useSwr from 'swr'
+import useSwr, { mutate } from 'swr'
 import { CETDate, twoDigitFix } from '../global/Global.js'
 
 const VerificationBadge = (props) => {
@@ -80,6 +80,8 @@ const DashboardTournamentCreationContainer = () => {
                 })}).then(res => res.json()).then(data => {
                     if (data.error) {
                         alert(data.error);
+                    } else {
+                        mutate('/api/yourtournaments');
                     }
                 });
                 setShow(false);
@@ -105,7 +107,7 @@ const DashboardTournamentCreationContainer = () => {
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 const DashboardContainer = (props) => {
-    const { data, error } = useSwr('/api/yourtournaments', fetcher, {refreshInterval: 1000})
+    const { data, error } = useSwr('/api/yourtournaments', fetcher, {refreshInterval: 10000})
 
     if (error) {
         return "Error!";
@@ -135,7 +137,9 @@ const DashboardContainer = (props) => {
                             {value.challonge && (<div><u>Challonge:</u> {value.challonge}</div>)}
                             <VerificationBadge state={value.state} />
                             <a style={{display: 'inline-block', padding: 10, backgroundColor: 'red', color: 'black', borderRadius: 90, fontSize: 14, cursor: 'pointer'}}
-                                onClick={() => fetch('/api/removetournament/' + tournamentId)}>
+                                onClick={() => {
+                                    fetch('/api/removetournament/' + tournamentId).then(res => mutate('/api/yourtournaments'));
+                                }}>
                                 Click here to delete the tournament permanently
                             </a>
                         </div>

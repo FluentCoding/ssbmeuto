@@ -9,7 +9,7 @@ export default async(req, res) => {
     if (req.method === 'POST') {
         const session = await getSession({ req });
 
-        if (!session.user.name || !session.user.email) {
+        if (!session.user?.name || !session.user?.email) {
             res.status(400).json({error: "Please re-login!"});
             return;
         }
