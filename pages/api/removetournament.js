@@ -1,4 +1,5 @@
 import dbConnect from '../../utils/dbConnect'
+import AdminEntry from '../../models/AdminEntry'
 import Tournament from '../../models/Tournament'
 import { getSession } from 'next-auth/client'
 
