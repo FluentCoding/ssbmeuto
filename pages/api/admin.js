@@ -26,20 +26,11 @@ export default async(req, res) => {
         }
 
         await dbConnect();
-        if (body.action === "ACCEPT") {
-            try {
-                await Tournament.findOneAndUpdate({authorId: body.authorId, _id: body.tournamentId}, {state: 2});
-                res.status(201).json({success: true});
-            } catch(error) {
-                res.status(400).json({success: false});
-            }
-        } else {
-            try {
-                await Tournament.findOneAndUpdate({authorId: body.authorId, _id: body.tournamentId}, {state: 1});
-                res.status(201).json({success: true});
-            } catch(error) {
-                res.status(400).json({success: false});
-            }
+        try {
+            await Tournament.findOneAndUpdate({authorId: body.authorId, _id: body.tournamentId}, {state: body.action === "ACCEPT " ? 2 : 1});
+            res.status(201).json({success: true});
+        } catch(error) {
+            res.status(400).json({success: false});
         }
     }
     else {
