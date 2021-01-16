@@ -6,7 +6,7 @@ import { providers, signIn, useSession } from 'next-auth/client'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 const DashboardContainer = (props) => {
-    const { data, error } = useSwr('/api/unmanagedtournaments/', fetcher, {refreshInterval: 10000})
+    const { data, error } = useSwr('/api/admin', fetcher, {refreshInterval: 10000})
 
     if (error) {
         return "Error!";
@@ -41,21 +41,21 @@ const DashboardContainer = (props) => {
                             {value.challonge && (<div><u>Challonge:</u> {value.challonge}</div>)}
                             <a style={{display: 'inline-block', padding: 10, backgroundColor: 'lightgreen', color: 'black', borderRadius: 90, marginLeft: 10, fontSize: 14, cursor: 'pointer'}}
                                 onClick={() => {
-                                    fetch('/api/unmanagedtournaments/', {method: 'POST', body: JSON.stringify({
+                                    fetch('/api/admin', {method: 'POST', body: JSON.stringify({
                                     "tournamentId": tournamentId,
                                     "authorId": value.authorId,
                                     "action": "ACCEPT"
-                                    })}).then(res => mutate('/api/unmanagedtournaments/'));
+                                    })}).then(res => mutate('/api/admin'));
                                 }}>
                                 Accept
                             </a>
                             <a style={{display: 'inline-block', padding: 10, backgroundColor: 'red', color: 'black', borderRadius: 90, margin: 10, fontSize: 14, cursor: 'pointer'}}
                                 onClick={() => {
-                                    fetch('/api/unmanagedtournaments/', {method: 'POST', body: JSON.stringify({
+                                    fetch('/api/admin', {method: 'POST', body: JSON.stringify({
                                     "tournamentId": tournamentId,
                                     "authorId": value.authorId,
                                     "action": "DECLINE"
-                                })}).then(res => mutate('/api/unmanagedtournaments/'));
+                                })}).then(res => mutate('/api/admin'));
                                 }}>
                                 Decline
                             </a>
@@ -64,7 +64,7 @@ const DashboardContainer = (props) => {
                                     fetch('/api/removetournament', {method: 'POST', body: JSON.stringify({
                                     "tournamentId": tournamentId,
                                     "authorId": value.authorId
-                                    })}).then(res => mutate('/api/unmanagedtournaments/'));
+                                    })}).then(res => mutate('/api/admin'));
                                 }}>
                                 Click here to delete the tournament permanently
                             </a>
