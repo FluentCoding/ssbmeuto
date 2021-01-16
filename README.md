@@ -8,7 +8,7 @@ This is the source code of the website [SmashMelee.EU](https://smashmelee.eu)!
 
 1. Install [NodeJs LTS Version](https://nodejs.org/en/)
 2. Install the latest version of
-[MongoDb Community Server](https://www.mongodb.com/try/download/community)
+[MongoDB Community Server](https://www.mongodb.com/try/download/community)
 3. Install yarn using `npm install -g yarn`
 
 ### Google Authentication Setup
@@ -36,13 +36,13 @@ the MongoDB the database.
 
 ```json
 {
-    "id": "YOUREMAILHERE@gmail.com"
+    "id": "yourlowercaseemailhere@gmail.com"
 }
 ```
 
 *Please use the email address you are going to log into the application with.*
 
-4. Go to [http://localhost:3000/admin](http://localhost:3000/admin) to check out
+4. Go to [https://localhost:3000/admin](https://localhost:3000/admin) to check out
 admin portal.
 
 ## Development
