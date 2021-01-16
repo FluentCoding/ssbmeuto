@@ -7,6 +7,12 @@ import useSwr from 'swr'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { useState } from 'react'
 
+const TournamentProviderLink = (props) => (
+  <Link href={props.link}>
+    <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: props.color}}>{props.name}</a>
+  </Link>
+);
+
 const Logo = () => {
   const [ showInfo, setShowInfo ] = useState(false);
 
@@ -46,21 +52,9 @@ const TournamentContainer = (props) => (<>
     <div style={{fontSize: 18}}>{props.time}</div>
     </>}
     <div style={{marginTop: 30}} />
-    {props.challonge &&
-      <Link href={props.challonge}>
-        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#FF9152'}}>Challonge</a>
-      </Link>
-    }
-    {props.smashgg &&
-      <Link href={props.smashgg}>
-        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#CB333B'}}>SmashGG</a>
-      </Link>
-    }
-    {props.discord &&
-      <Link href={props.discord}>
-        <a target="_blank" rel="noreferrer" className={styles.link_button} style={{backgroundColor: '#7289DA'}}>Discord</a>
-      </Link>
-    }
+    {props.challonge && <TournamentProviderLink link={props.challonge} color="#FF9152" name="Challonge" />}
+    {props.smashgg && <TournamentProviderLink link={props.smashgg} color="#CB333B" name="SmashGG" /> }
+    {props.discord && <TournamentProviderLink link={props.discord} color="#7289DA" name="Discord" /> }
   </div>
 </>);
 
