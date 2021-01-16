@@ -27,7 +27,7 @@ export default async(req, res) => {
 
         await dbConnect();
         try {
-            await Tournament.findOneAndUpdate({authorId: body.authorId, _id: body.tournamentId}, {state: body.action === "ACCEPT " ? 2 : 1});
+            await Tournament.findOneAndUpdate({authorId: body.authorId, _id: body.tournamentId}, {state: body.action === "ACCEPT" ? 2 : 1});
             res.status(201).json({success: true});
         } catch(error) {
             res.status(400).json({success: false});
