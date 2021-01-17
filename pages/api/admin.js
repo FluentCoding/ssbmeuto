@@ -39,7 +39,8 @@ export default async(req, res) => {
 
         try {
             const unmanagedTournaments = await Tournament.find({state: 0});
-            const allTournaments = await Tournament.find({state: 2, datetime: {$gte: CETDate().getTime()}});
+            const allTournaments = await Tournament.find({state: 2, datetime: {$gte: new Date().getTime()}});
+            allTournaments.sort((a, b) => a.datetime > b.datetime ? 1 : -1);
 
             res.status(201).json({success: true, unmanaged: unmanagedTournaments, all: allTournaments});
         } catch(error) {
