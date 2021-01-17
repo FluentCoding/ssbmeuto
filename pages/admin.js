@@ -5,7 +5,7 @@ import { twoDigitFix } from '../global/Global'
 import { providers, signIn, useSession } from 'next-auth/client'
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
-const DashboardContainer = (props) => {
+const DashboardContainer = () => {
     const { data, error } = useSwr('/api/admin', fetcher, {refreshInterval: 10000})
 
     if (error) {
@@ -26,14 +26,14 @@ const DashboardContainer = (props) => {
             <div style={{display: 'flex'}}>
                 <div style={{border: '3px solid lightgray', padding: 30, minWidth: '75vw'}}>
                     {
-                    data.data.length === 0 ? <span style={{color: 'lightgray'}}>No new tournaments submitted yet</span> :
+                    data.unmanaged.length === 0 ? <span style={{color: 'lightgray'}}>No new tournaments submitted yet</span> :
                     <>
-                    {data.data.map((value, index) => {
+                    {data.unmanaged.map((value, index) => {
                         var d = new Date(Number(value.datetime));
                         d.setUTCHours(d.getUTCHours() + 1);
                         var tournamentId = value._id;
                         return (
-                        <div style={{border: '2px solid lightgray', color: 'lightgray', padding: 10, marginBottom: index == data.data.length - 1 ? 0 : 10}}>
+                        <div style={{border: '2px solid lightgray', color: 'lightgray', padding: 10, marginBottom: index == data.unmanaged.length - 1 ? 0 : 10}}>
                             <u>Name:</u> {value.name}, <u>Datetime:</u> {d.toDateString()} {twoDigitFix(d.getUTCHours())}:{twoDigitFix(d.getMinutes())} CET Time
                             <div><u>Author name:</u> {value.authorName}</div>
                             {value.discord && (<div><u>Discord:</u> {value.discord}</div>)}
@@ -76,6 +76,40 @@ const DashboardContainer = (props) => {
                 </div>
             </div>
             <div style={{marginTop: 100}} />
+            <span style={{fontSize: 48, color: '#C7493A'}}>Current Tournaments</span>
+            <div style={{marginTop: 100}} />
+            <div style={{display: 'flex'}}>
+                <div style={{border: '3px solid lightgray', padding: 30, minWidth: '75vw'}}>
+                    {
+                    data.all.length === 0 ? <span style={{color: 'lightgray'}}>No tournaments at the moment</span> :
+                    <>
+                    {data.all.map((value, index) => {
+                        var d = new Date(Number(value.datetime));
+                        d.setUTCHours(d.getUTCHours() + 1);
+                        var tournamentId = value._id;
+                        return (
+                        <div style={{border: '2px solid lightgray', color: 'lightgray', padding: 10, marginBottom: index == data.all.length - 1 ? 0 : 10}}>
+                            <u>Name:</u> {value.name}, <u>Datetime:</u> {d.toDateString()} {twoDigitFix(d.getUTCHours())}:{twoDigitFix(d.getMinutes())} CET Time
+                            <div><u>Author name:</u> {value.authorName}</div>
+                            {value.discord && (<div><u>Discord:</u> {value.discord}</div>)}
+                            {value.smashgg && (<div><u>SmashGG:</u> {value.smashgg}</div>)}
+                            {value.challonge && (<div><u>Challonge:</u> {value.challonge}</div>)}
+                            <a style={{display: 'inline-block', padding: 10, backgroundColor: 'red', color: 'black', margin: 10, borderRadius: 90, fontSize: 14, cursor: 'pointer'}}
+                                onClick={() => {
+                                    fetch('/api/removetournament', {method: 'POST', body: JSON.stringify({
+                                    "tournamentId": tournamentId,
+                                    "authorId": value.authorId
+                                    })}).then(res => mutate('/api/admin'));
+                                }}>
+                                Click here to delete the tournament permanently
+                            </a>
+                        </div>
+                        );
+                    })}
+                    </>
+                    }
+                </div>
+            </div>
         </div>);
     };
 

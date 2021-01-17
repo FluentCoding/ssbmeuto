@@ -2,6 +2,7 @@ import dbConnect from '../../utils/dbConnect'
 import Tournament from '../../models/Tournament'
 import AdminEntry from '../../models/AdminEntry'
 import { getSession } from 'next-auth/client'
+import { CETDate } from '../../global/Global'
 
 export default async(req, res) => {
     const session = await getSession({ req });
@@ -37,12 +38,10 @@ export default async(req, res) => {
         await dbConnect();
 
         try {
-            const yourTournaments = await Tournament.find({state: 0});
+            const unmanagedTournaments = await Tournament.find({state: 0});
+            const allTournaments = await Tournament.find({state: 2, datetime: {$gte: CETDate().getTime()}});
 
-            if (yourTournaments.authorId)
-                delete yourTournaments.authorId;
-
-            res.status(201).json({success: true, data: yourTournaments});
+            res.status(201).json({success: true, unmanaged: unmanagedTournaments, all: allTournaments});
         } catch(error) {
             res.status(400).json({success: false});
         }
