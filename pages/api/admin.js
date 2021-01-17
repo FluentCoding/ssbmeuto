@@ -37,9 +37,11 @@ export default async(req, res) => {
     else {
         await dbConnect();
 
+        var start = CETDate();
+        start.setHours(0, 0, 0, 0);
         try {
             const unmanagedTournaments = await Tournament.find({state: 0});
-            const allTournaments = await Tournament.find({state: 2, datetime: {$gte: new Date().getTime()}});
+            const allTournaments = await Tournament.find({state: 2, datetime: {$gte: start.getTime()}});
             allTournaments.sort((a, b) => a.datetime > b.datetime ? 1 : -1);
 
             res.status(201).json({success: true, unmanaged: unmanagedTournaments, all: allTournaments});
