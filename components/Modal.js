@@ -8,10 +8,13 @@ const Modal = (props) => {
         <div className={styles.modal}>
             <div>{props.children}</div>
             <div className={styles.actions}>
-                <button className={styles.button} onClick={props.submit}>
-                submit
+            <button className={styles.imgButton} onClick={props.submit}>
+                Image
                 </button>
-                <button className={styles.button} onClick={props.close}>
+                <button className={styles.submitButton} onClick={props.submit}>
+                Submit
+                </button>
+                <button className={styles.closeButton} onClick={props.close}>
                 close
                 </button>
             </div>

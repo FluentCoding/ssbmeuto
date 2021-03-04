@@ -1,56 +1,189 @@
-  .modal {
-    width: 80%;
-    border: 1px solid #ccc;
-    margin-top: 50px;
-    font-family: 'Roboto';
-    font-size: 20px;
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-  }
-  .modal input {
-    padding: 5px;
-    font-size: 16px;
-    background-color: transparent;
-    color: white;
-    border: 1px solid white;
-  }
-  .modal h2 {
-    border-bottom: 1px solid #ccc;
-    padding: 1rem;
-    margin: 0;
-  }
-  .modal .actions {
-    margin-top: 25px;
-  }
-  .modal .actions:last-child {
-      margin-right: 0;
-  }
-  .modal .actions button {
-    transition: 0.1s ease-in-out;
-    border: 1px solid white;
-    background: 0;
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
-    color: white;
-    line-height: 1;
-    cursor: pointer;
-    margin-right: 10px;
-  }
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
 
-  .modal .actions button:hover {
-    color: #C7493A;
-    border: 1px solid #C7493A;
-  }
+.modal > :first-child {
+  width: 100%;
+  font-family: "Roboto";
+  font-size: 20px;
+  left: 0;
+  top: 0;
+  left: -10px;
+  position: absolute;
+  display: flex;
+  overflow-x: hidden;
+  background: #f8f9fa;
+  flex-direction: column;
+  height: 100%;
+  min-height: 800px;
+  z-index: +30;
+}
 
-  .modal select {
-      background-color: transparent;
-      color: white;
-      border: 1px solid white;
-      margin-right: 10px;
-      height: 34px;
-  }
+@media screen and (min-height: 900px) {
+}
 
-  .modal option {
-      color: black;
-  }
+.modal > :last-child {
+  width: 100%;
+
+  font-family: "Roboto";
+  font-size: 20px;
+
+  left: 0;
+  top: 800px;
+  left: -10px;
+  position: relative;
+  display: flex;
+  overflow-x: scroll;
+  background: rgb(151, 97, 97);
+  flex-direction: column;
+  height: 0%;
+  z-index: +30;
+}
+
+.modal input {
+  position: relative;
+  border-radius: 50px;
+  width: 282px;
+  height: 65px;
+  top: 100px;
+  left: 50%;
+  font-size: 16px;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  color: rgb(87, 80, 80);
+  display: flex;
+  margin-top: 10px;
+  background: #eef2f3;
+  flex-direction: column;
+  border: none;
+  font-family: Poppins;
+  white-space: nowrap;
+  outline: none;
+  transition: 0.1s;
+}
+
+.modal input:focus {
+  background: none;
+  border: 2px solid black;
+}
+
+.add {
+  font-size: 20px;
+  color: black;
+}
+
+.modal input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+.modal ::placeholder {
+  left: 20px;
+  color: rgb(75, 71, 71);
+  position: relative;
+}
+
+.modal input[type="datetime-local"] {
+  position: relative;
+
+  line-height: 64px;
+  color: rgb(75, 71, 71);
+
+  padding-right: 54px;
+  overflow: hidden;
+}
+
+.modal h2 {
+  color: black;
+  border-bottom: 1px solid rgb(90, 45, 45);
+  padding: 1rem;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.imgButton {
+  position: relative;
+  border-radius: 50px;
+  width: 136px;
+  height: 65px;
+  background: #eef2f3;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: none;
+  margin-left: -77px;
+  color: white;
+  background: black;
+  font-size: 16px;
+  font-family: poppins;
+}
+
+.closeButton {
+  position: absolute;
+  border-radius: 50px;
+  width: 52px;
+  height: 65px;
+  background: #eef2f3;
+  top: 95px;
+  left: 50%;
+  margin-left: -4px;
+  transform: translate(-50%, -50%);
+  border: none;
+  color: white;
+  background: rgb(0, 0, 0);
+  font-size: 16px;
+  font-family: poppins;
+  width: 282px;
+}
+
+.submitButton {
+  position: relative;
+  border-radius: 50px;
+  width: 136px;
+  height: 65px;
+  background: #eef2f3;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 10px;
+  border: none;
+  color: white;
+  background: black;
+  font-size: 16px;
+  font-family: poppins;
+}
+
+.modal .actions {
+  position: relative;
+  top: 580px;
+  background: none;
+  overflow: visible;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  width: 375px;
+  display: flex;
+
+  flex-direction: row;
+}
+
+.modal select {
+  background-color: transparent;
+  color: rgb(0, 0, 0);
+  border: 1px solid white;
+  margin-right: -10px;
+  height: 34px;
+}
+
+.modal option {
+  color: rgb(0, 0, 0);
+}
+
+.modal input[type="images"] {
+  position: relative;
+
+  line-height: 64px;
+  color: rgb(255, 255, 255);
+
+  padding-right: 54px;
+  overflow: hidden;
+}
