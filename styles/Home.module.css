@@ -80,6 +80,132 @@
   top: 65px;
   border-radius: 16px;
 }
+.imgselectContainer {
+  position: absolute;
+  height: 400px;
+  width: 100%;
+  background: #F8F9FA;
+ right: 0;
+ bottom: 0;
+ box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+ border-radius: 50px;
+  z-index: +1;
+ 
+  border-radius: 50px;
+}
+.charAndStages{
+  position: absolute;
+  width: 300px;
+  height: 60px;
+  background: #F1F5F6;
+  top: calc(50% - 125px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 200px;
+}
+.char{
+  position: absolute;
+  left: 2.5px;
+  top: 2.5px;
+  width: 150px;
+  height: calc(100% - 5px);
+  background: black;
+  border-radius: 200px;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-family: Poppins;
+}
+
+.charOff{
+  position: absolute;
+  left: 2.5px;
+  top: 2.5px;
+  width: 150px;
+  height: calc(100% - 5px);
+  background: none;
+  border-radius: 200px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 15px;
+  font-family: Poppins;
+}
+.stages{
+  position: absolute;
+  left: 150px;
+  top: 2.5px;
+  width: 150px;
+  height: calc(100% - 5px);
+  background: none;
+  border-radius: 200px;
+  color: black;
+  text-align: center;
+  padding: 15px;
+  font-family: Poppins;
+}
+.stagesOn{
+  position: absolute;
+  left: 150px;
+  top: 2.5px;
+  width: 150px;
+  height: calc(100% - 5px);
+  background: black;
+  border-radius: 200px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 15px;
+  font-family: Poppins;
+}
+.imgContainer{
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 50px);
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  border: 2px solid black;
+  width: 85%;
+  height: 240px
+}
+.imgContainerOff{
+  display: none;
+}
+
+.showImgOff{
+  display: none
+}
+.stageContainer{
+  display: none;
+}
+.stageContainerOn{
+  position: absolute;
+  left: 50%;
+  top: calc(50% + 50px);
+  transform: translate(-50%, -50%);
+  border-radius: 30px;
+  border: 2px solid blue;
+  width: 85%;
+  height: 240px
+}
+
+
+.stage{
+  left: 15px;
+  top: 15px;
+  position: absolute;
+  border: 2px solid blue;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
+.img{
+  left: 15px;
+  top: 15px;
+  position: absolute;
+  border: 2px solid grey;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+}
 .filterContainer {
   width: 0;
   height: 0;
@@ -308,6 +434,7 @@ z-index: +2;
   transform: translate(-50%, -50%);
   transition: 0.3s;
   overflow: hidden;
+  
 }
 
 .backButtonOn {
@@ -639,6 +766,12 @@ z-index: +2;
 }
 
 @media only screen and (min-width: 740px) {
+.imgselectContainer{
+  right: 0;
+  bottom: 0;
+  width: 400px;
+}
+
   .column div {
     padding: 20px;
   }

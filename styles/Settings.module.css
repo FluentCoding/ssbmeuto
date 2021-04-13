@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
+
+.settingsContainer{
+    position: absolute;
+    
+    background: #F8F9FA;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 60px;
+    padding-left: 30px;
+    color: black;
+    font-family: Poppins;
+    font-size: 25px
+  }
+  
+  .inputSettings{
+    position: absolute;
+  background: black;
+  border: none;
+  color: white;
+  -webkit-appearance: none;
+  font-family: Poppins;
+  width: 300px;
+  height: 70px;
+  left: 30px;
+  top: 220px;
+  border-radius: 20px;
+  font-size: 18px;
+  padding-left: 80px;
+  
+  }
+  .inputSettings:focus{
+    outline: none;
+  }
+
+  .region{
+      font-size: 20px;
+   margin-top: 60px;
+   left: 30px;
+  }
+
+  .navbar {
+    height: 70px;
+    width: 100%;
+    position: fixed;
+    left: 0%;
+    bottom: 0;
+    background: #f8f9fa;
+  }
+  
+  .navhome {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 22.5%;
+    transform: translate(-50%, -50%);
+    top: 40%;
+  }
+  
+  .house {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 20%;
+    fill: white;
+  }
+  
+  .navtournaments {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 40%;
+  }
+  
+  .person {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 25%;
+  }
+  
+  .navsettings {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 77.5%;
+    transform: translate(-50%, -50%);
+    top: 40%;
+  }
+  
+  .cogs {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 25%;
+  }

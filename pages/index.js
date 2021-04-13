@@ -9,9 +9,14 @@ import ReactDOM from "react-dom";
 import { useState, useRef, useEffect } from "react";
 
 function Nav() {
-  function Link(e) {
+  function linkPub(e) {
     window.location.href = "/publish";
   }
+
+  function linkSet(e) {
+    window.location.href = "/settings";
+  }
+
 
   return (
     <div className={styles.navbar}>
@@ -37,7 +42,7 @@ function Nav() {
         </svg>{" "}
       </div>
 
-      <div className={styles.navtournaments} onClick={Link}>
+      <div className={styles.navtournaments} onClick={linkPub}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -51,7 +56,7 @@ function Nav() {
         </svg>
       </div>
 
-      <div className={styles.navsettings}>
+      <div className={styles.navsettings} onClick={linkSet}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="28"
@@ -273,6 +278,25 @@ function Filters(props) {
   );
 }
 
+function Img(props) {
+  return (
+    <div className={ props.clickOff ? styles.showImgOff :styles.imgselectContainer}>
+      <div className={styles.charAndStages}>
+        <div className={props.imgStage ? styles.charOff : styles.char} onClick={props.imgOff}>Characters</div>
+        <div className={props.imgStage ? styles.stagesOn : styles.stages} onClick={props.showImg}>Stages</div>
+      </div>
+      <div className={props.imgStage ? styles.imgContainerOff : styles.imgContainer}>
+        <div className={styles.img} onClick={props.showImgContain}></div>
+      </div>
+      <div className={ props.imgStage ? styles.stageContainerOn : styles.stageContainer}>
+        <div className={styles.stage} onClick={props.showImgContain}></div>
+      </div>
+    </div>
+  );
+}
+
+
+
 const TournamentDay = (props) => (
   <div className={styles.column}>
     <div className={styles.days} style={{ color: "black" }}>
@@ -442,9 +466,16 @@ export default function Home() {
   const { data, error } = useSwr("/api/tournaments", fetcher, {
     refreshInterval: 1000 * 60 * 20,
   });
+ 
   let [info, setSidebar] = useState(false);
   let showIt = () => setSidebar((info = true));
   let showOff = () => setSidebar((info = false));
+
+  let [imgStage, setImgStage] = useState(false);
+  let [clickOff, setClickOff] = useState(false);
+  let showImgContain = () => setClickOff((clickOff = true));
+  let showImg = () => setImgStage((imgStage = true));
+  let imgOff = () => setImgStage((imgStage = false));
   if (error) return <>{error}</>;
   if (!data)
     return (
@@ -518,6 +549,8 @@ export default function Home() {
         <Arrows />
         <Title />
         <Filters />
+       
+        <Img imgStage={imgStage} setImgStage={setImgStage} imgOff={imgOff} showImg={showImg} clickOff={clickOff} setClickOff={setClickOff} showImgContain={showImgContain}/>
         <div className={styles.container}>
           <Head>
             <title>SSBM EU Tournaments</title>
