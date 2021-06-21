@@ -1,37 +1,322 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+.navbar {
+  height: 70px;
+  width: 100%;
+  position: fixed;
+  left: 0%;
+  bottom: 0;
+
+  background: #f8f9fa;
+}
+
+.measure {
+  background: grey;
+  position: absolute;
+  left: 20px;
+  top: 149px;
+  height: 30px;
+  width: 80px;
+  z-index: +1000;
+  display: none;
+}
+
+.tourneyTitle {
+  position: relative;
+  width: 230px;
+  height: 38px;
+  left: -16px;
+  top: 101px;
+  z-index: +20;
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 37px;
+  /* identical to box height */
+  color: #030303;
+}
+
+.form {
+  color: black;
+  width: 400px;
+  background: black;
+}
+
+.navhome {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 22.5%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.nameIn {
+  left: -120px;
+  position: relative;
+  width: -50px;
+}
+
+.smashggIn {
+  position: relative;
+}
+
+.dateIn ::placeholder {
+  top: 20px;
+  position: relative;
+  color: black;
+}
+
+.house {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 40%;
+}
+
+.navtournaments {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.add {
+  color: black;
+  top: 65px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  width: 275px;
+  white-space: nowrap;
+  margin-top: 30px;
+  font-family: Lato;
+  font-size: 26px;
+  position: relative;
+}
+
+.person {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 45%;
+}
+
+.navsettings {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 77.5%;
+  transform: translate(-50%, -50%);
+  top: 50%;
+}
+
+.cogs {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  top: 45%;
+}
 
 .container {
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background-color: #0b0b0e;
+  background-color: #f8f9fa;
   color: white;
 }
 
 .dashboard_container {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   align-items: center;
-  min-height: 100vh;
-  background-color: #0b0b0e;
+  justify-content: center;
+  height: 140%;
+  background-color: #f8f9fa;
   color: white;
   padding: 50px;
+  width: 100%;
+  top: -30px;
+
+  position: absolute;
+  overflow-y: scroll;
+}
+
+.tourneyContainer {
+  position: relative;
+  overflow-x: scroll;
+  height: 325px;
+  width: 500px;
+  top: -49px;
+  left: -110px;
+}
+
+.tourney {
+}
+
+.remove {
+  height: 38px;
+  width: 38px;
+  border-radius: 15px;
+  position: absolute;
+  left: 255px;
+  top: 18px;
+}
+
+.name {
+  position: relative;
+  color: white;
+  top: 65px;
+  left: 30px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 34px;
+  line-height: 20px;
+}
+
+.tourneyDiv {
+  box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+  width: 312px;
+  height: 187px;
+  background-color: #171717;
+  border-radius: 40px;
+  left: 10px;
+  top: 40px;
+  position: relative;
+}
+
+/*
+.acceptInfo{
+  
+  width: 120px;
+   height: 38px;
+   margin-top: 115px;
+   background-color: white;
+  border-radius: 15px;
+  left: -50px;
+  font-size: 16px;
+  display: block;
+
+  overflow: visible;
+  color: black;
+  padding-left: 24px;
+  padding-top: 8px;
+}
+*/
+
+.dashboard_container div {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.container div {
+  display: flex;
+  flex-direction: row;
 }
 
 .button {
-  cursor: pointer;
-  user-select: none;
-  border: 3px solid #d9d9d9;
-  padding: 20px;
-  color: #d9d9d9
+  position: absolute;
+  width: 342px;
+  height: 65px;
+  left: 50%;
+  top: 90px;
+  transform: translate(-50%, -50%);
+  background: #171717;
+  white-space: nowrap;
+  box-sizing: border-box;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 65px;
+  font-family: Poppins;
+  font-size: 16px;
 }
 
-.button:hover {
-  transition: 0.2s ease-in-out;
-  color: #C7493A;
-  border: 3px solid #C7493A;
+@media screen and (min-width: 740px) {
+  .dashboard_container div {
+    flex-direction: column;
+  }
+
+  .container div {
+    flex-direction: column;
+  }
+
+  .tourneyContainer {
+    position: relative;
+    overflow-x: scroll;
+    height: 550px;
+    width: 500px;
+    top: 200px;
+    left: 220px;
+    left: calc(50% + 160px);
+    transform: translate(-50%, -50%);
+  }
+  .tourneyContainer::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sideBar {
+    left: 0;
+    top: 0;
+    width: 320px;
+    height: 100%;
+
+    background: #edeff1;
+    position: fixed;
+  }
+  .navbar {
+    width: 320px;
+    background: none;
+  }
+
+  .button {
+    position: fixed;
+    width: 300px;
+    height: 65px;
+    left: 160px;
+
+    top: 100px;
+    z-index: +20;
+    transform: translate(-50%, -50%);
+    background: #171717;
+    white-space: nowrap;
+    box-sizing: border-box;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 65px;
+    font-family: Poppins;
+    font-size: 16px;
+    bottom: 20px;
+  }
+  .tourneyTitle {
+    font-size: 33px;
+    left: 50%;
+    top: 30px;
+  }
+
+  .tourneyDiv {
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+    width: 264px;
+    height: 146px;
+    background-color: #171717;
+    border-radius: 40px;
+    left: 30px;
+    top: 40px;
+    position: relative;
+    border-radius: 20px;
+  }
+  .remove {
+    height: 38px;
+    width: 38px;
+    border-radius: 15px;
+    position: absolute;
+    left: 215px;
+    top: 12px;
+  }
 }
